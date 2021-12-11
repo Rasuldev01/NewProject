@@ -18,7 +18,7 @@ class Product(models.Model):
     price = models.IntegerField(default=0)
     info = models.CharField(max_length=200)
     active = models.BooleanField(default=True)
-    food_value = models.FloatField(default=0)
+
 
     def __str__(self):
         return self.name
