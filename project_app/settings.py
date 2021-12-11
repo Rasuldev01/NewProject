@@ -37,17 +37,22 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'allauth',
     'main',
     'client',
     'rest_framework',
-    'corsheaders'
+    'corsheaders',
+    'django.contrib.sites',
 ]
+SITE_ID = 1
+
 CORS_ORIGIN_ALLOW_ALL=True
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.AllowAny',
-    ]
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+    'USER_DETAILS_SERIALIZER': 'main.serializer.UserDetailsSerializer'
 }
 
 MIDDLEWARE = [
@@ -131,8 +136,8 @@ USE_TZ = False
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'static'
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = '/images/'
+MEDIA_ROOT = BASE_DIR / 'images'
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
